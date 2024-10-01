@@ -24,6 +24,9 @@ func _physics_process(delta):
 	else:
 		velocity.x = 0
 		
+	if Input.is_action_just_pressed("Down") && is_on_floor():
+		position.y += 3
+		
 	move_and_slide()
 
 

@@ -6,6 +6,9 @@ const JUMP_VELOCITY = -450
 const GRAVITY = 1800
 @onready var animated_sprite_2d = $AnimatedSprite2D
 
+func _ready():
+	GameManager.player = self
+	GameManager.playerOriginalPos = position
 
 func _process(delta):
 	UpdateAnimation()

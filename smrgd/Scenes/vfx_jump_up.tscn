@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://saycx6xoinml"]
+
+[ext_resource type="Texture2D" uid="uid://dthfp1e71wfkw" path="res://assets/VFX/VFX_JumpUp.png" id="1_38o8v"]
+[ext_resource type="Script" path="res://scripts/vfx_jump_up.gd" id="1_ncgdv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bfq8"]
+atlas = ExtResource("1_38o8v")
+region = Rect2(0, 0, 48, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wv3iv"]
+atlas = ExtResource("1_38o8v")
+region = Rect2(48, 0, 48, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x12ve"]
+atlas = ExtResource("1_38o8v")
+region = Rect2(96, 0, 48, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fm85c"]
+atlas = ExtResource("1_38o8v")
+region = Rect2(144, 0, 48, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3llu0"]
+atlas = ExtResource("1_38o8v")
+region = Rect2(192, 0, 48, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xppme"]
+atlas = ExtResource("1_38o8v")
+region = Rect2(240, 0, 48, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j63c0"]
+atlas = ExtResource("1_38o8v")
+region = Rect2(288, 0, 48, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utw3v"]
+atlas = ExtResource("1_38o8v")
+region = Rect2(336, 0, 48, 56)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tb8mg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bfq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wv3iv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x12ve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fm85c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3llu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xppme")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j63c0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utw3v")
+}],
+"loop": false,
+"name": &"Start",
+"speed": 15.0
+}]
+
+[node name="VFX_JumpUp" type="Node2D"]
+script = ExtResource("1_ncgdv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -28)
+sprite_frames = SubResource("SpriteFrames_tb8mg")
+animation = &"Start"

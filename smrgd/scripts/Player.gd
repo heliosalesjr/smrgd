@@ -18,8 +18,10 @@ func _physics_process(delta):
 	if is_on_floor() == false:
 		velocity.y += GRAVITY * delta
 		
+		
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
 		velocity.y += JUMP_VELOCITY
+		PlayJumpUpVFX()
 		
 	var direction = Input.get_axis("Left","Right")
 	if direction != 0:
@@ -45,3 +47,8 @@ func UpdateAnimation():
 	else:
 		animated_sprite_2d.play("Jump")		
 			
+func PlayJumpUpVFX():
+	var vfxToSpawn = preload("res://Scenes/vfx_jump_up.tscn")
+	var vfxInstance = vfxToSpawn.instantiate()
+	vfxInstance.global_position = global_position
+	get_tree().get_root().get_node("Root").add_child(vfxInstance)

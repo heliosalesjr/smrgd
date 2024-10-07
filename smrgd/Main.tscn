@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://gn1s7gxhsxqh"]
+[gd_scene load_steps=70 format=3 uid="uid://gn1s7gxhsxqh"]
 
 [ext_resource type="Texture2D" uid="uid://bvm2fqsbni1g3" path="res://assets/Tilemap/Tilemap_ProjectLittleAdventurerAndie2D.png" id="1_jya3w"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="2_7er21"]
@@ -12,8 +12,13 @@
 [ext_resource type="Texture2D" uid="uid://d0v47x4lx4n3y" path="res://assets/Background/02_ProjectLittleAdventurerAndie2D.png" id="10_1ji5e"]
 [ext_resource type="Texture2D" uid="uid://bw20yxv61sck0" path="res://assets/Background/01_ProjectLittleAdventurerAndie2D.png" id="11_5wyto"]
 [ext_resource type="Texture2D" uid="uid://ypceiay0j6a2" path="res://assets/Background/00_ProjectLittleAdventurerAndie2D.png" id="12_wr8yq"]
+[ext_resource type="Texture2D" uid="uid://bqse7f78i2kq2" path="res://assets/Background/CloseBackground/CBG03_ProjectLittleAdventurerAndie2D.png" id="13_cuya2"]
+[ext_resource type="Texture2D" uid="uid://da2x2upkgrvrp" path="res://assets/Background/CloseBackground/CBG01_ProjectLittleAdventurerAndie2D.png" id="13_fj5st"]
 [ext_resource type="Texture2D" uid="uid://bll0hpqgwefh4" path="res://assets/Background/Particles_ProjectLittleAdventurerAndie2D.png" id="13_nhaku"]
+[ext_resource type="Texture2D" uid="uid://cpq7lq7krp52a" path="res://assets/Background/CloseBackground/CBG02_ProjectLittleAdventurerAndie2D.png" id="14_8kn8q"]
 [ext_resource type="Texture2D" uid="uid://h8ni3m3c0npq" path="res://assets/Background/Sunshine_ProjectLittleAdventurerAndie2D.png" id="14_yj4e8"]
+[ext_resource type="Texture2D" uid="uid://dnnynks1j6wx4" path="res://assets/Background/CloseBackground/CBG04_ProjectLittleAdventurerAndie2D.png" id="16_l2s1r"]
+[ext_resource type="Texture2D" uid="uid://sihtifed3gqv" path="res://assets/Background/CloseBackground/CBG05_ProjectLittleAdventurerAndie2D.png" id="17_e68ko"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1byjx"]
 friction = 0.0
@@ -921,6 +926,28 @@ motion_mirroring = Vector2(945, 745)
 sprite_frames = SubResource("SpriteFrames_v33sx")
 autoplay = "default"
 centered = false
+
+[node name="ParallaxLayer7" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Cbg03ProjectLittleAdventurerAndie2d" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer7"]
+position = Vector2(1688, 56)
+texture = ExtResource("13_cuya2")
+
+[node name="Cbg01ProjectLittleAdventurerAndie2d" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer7"]
+position = Vector2(224, -96)
+texture = ExtResource("13_fj5st")
+
+[node name="Cbg02ProjectLittleAdventurerAndie2d" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer7"]
+position = Vector2(672, -72)
+texture = ExtResource("14_8kn8q")
+
+[node name="Cbg04ProjectLittleAdventurerAndie2d" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer7"]
+position = Vector2(2024, -48)
+texture = ExtResource("16_l2s1r")
+
+[node name="Cbg05ProjectLittleAdventurerAndie2d" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer7"]
+position = Vector2(2320, -384)
+texture = ExtResource("17_e68ko")
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
 layer = 100

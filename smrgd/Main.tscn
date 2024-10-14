@@ -1,12 +1,14 @@
-[gd_scene load_steps=78 format=3 uid="uid://gn1s7gxhsxqh"]
+[gd_scene load_steps=90 format=3 uid="uid://gn1s7gxhsxqh"]
 
 [ext_resource type="Texture2D" uid="uid://bvm2fqsbni1g3" path="res://assets/Tilemap/Tilemap_ProjectLittleAdventurerAndie2D.png" id="1_jya3w"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="2_7er21"]
 [ext_resource type="Texture2D" uid="uid://cb6t7yo1t30wc" path="res://assets/Animations/Player/Idle.png" id="2_544tm"]
 [ext_resource type="Texture2D" uid="uid://cg14ammso72hq" path="res://assets/Animations/Player/Run.png" id="3_832pq"]
 [ext_resource type="Texture2D" uid="uid://c1jw6qacf131g" path="res://assets/Animations/Player/Jump.png" id="3_waham"]
+[ext_resource type="Texture2D" uid="uid://vghjis1shb81" path="res://assets/Animations/Player/Shoot_Jump.png" id="6_31ucp"]
 [ext_resource type="Script" path="res://scripts/area_2d_player_reset_area.gd" id="6_d3fcb"]
 [ext_resource type="Texture2D" uid="uid://cnd360jrxfdm" path="res://assets/Animations/Player/Shoot_Stand.png" id="6_w7c4s"]
+[ext_resource type="Texture2D" uid="uid://c4cv5ukkk5xe5" path="res://assets/Animations/Player/Shoot_Run.png" id="7_eo0l0"]
 [ext_resource type="Texture2D" uid="uid://p7ae6yhi8hgn" path="res://assets/Background/05_ProjectLittleAdventurerAndie2D.png" id="7_fkr3u"]
 [ext_resource type="Texture2D" uid="uid://bw4m1wwl7xfy" path="res://assets/Background/04_ProjectLittleAdventurerAndie2D.png" id="8_cbj5d"]
 [ext_resource type="Texture2D" uid="uid://1fphiq4sco1d" path="res://assets/Background/03_ProjectLittleAdventurerAndie2D.png" id="9_fkt7a"]
@@ -624,6 +626,46 @@ region = Rect2(448, 0, 64, 64)
 atlas = ExtResource("3_832pq")
 region = Rect2(512, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4in6u"]
+atlas = ExtResource("6_31ucp")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhphk"]
+atlas = ExtResource("7_eo0l0")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78eda"]
+atlas = ExtResource("7_eo0l0")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ckqk"]
+atlas = ExtResource("7_eo0l0")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itiih"]
+atlas = ExtResource("7_eo0l0")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rge37"]
+atlas = ExtResource("7_eo0l0")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8605"]
+atlas = ExtResource("7_eo0l0")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fr2ue"]
+atlas = ExtResource("7_eo0l0")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pdnw"]
+atlas = ExtResource("7_eo0l0")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_duj8c"]
+atlas = ExtResource("7_eo0l0")
+region = Rect2(512, 0, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_qj815"]
 atlas = ExtResource("6_w7c4s")
 region = Rect2(0, 0, 64, 64)
@@ -743,6 +785,46 @@ animations = [{
 }],
 "loop": true,
 "name": &"Run",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4in6u")
+}],
+"loop": false,
+"name": &"Shoot_Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhphk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78eda")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ckqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itiih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rge37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8605")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fr2ue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pdnw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_duj8c")
+}],
+"loop": false,
+"name": &"Shoot_Run",
 "speed": 10.0
 }, {
 "frames": [{
@@ -902,7 +984,7 @@ shape = SubResource("CapsuleShape2D_obbby")
 z_index = 100
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_lsv5o")
-animation = &"Shoot_Stand"
+animation = &"Shoot_Run"
 autoplay = "Idle"
 
 [node name="Camera2D" type="Camera2D" parent="Player"]

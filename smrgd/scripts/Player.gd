@@ -47,20 +47,42 @@ func _physics_process(delta):
 	move_and_slide()
 
 
+
 func UpdateAnimation():
 	if velocity.x != 0:
 		animated_sprite_2d.flip_h = velocity.x < 0
+		if velocity.x < 0:
+			shooting_point.position.x = -26
+		else:
+			shooting_point.position.x = 26
 		
 	if is_on_floor():
 		if abs(velocity.x) >= 0.1:
-			animated_sprite_2d.play("Run")
+			
+			var playingAnimationFrame = animated_sprite_2d.frame
+			var playingAnimationName = animated_sprite_2d.animation
+			
+			if isShooting:
+				animated_sprite_2d.play("Shoot_Run")
+				
+				if playingAnimationName == "Run":
+					animated_sprite_2d.frame = playingAnimationFrame
+			else:
+				if playingAnimationName == "Shoot_Run" && animated_sprite_2d.is_playing():
+					pass
+				else:	
+					animated_sprite_2d.play("Run")
+						
 		else:
 			if isShooting:
 				animated_sprite_2d.play("Shoot_Stand")
 			else:
 				animated_sprite_2d.play("Idle")
 	else:
-		animated_sprite_2d.play("Jump")		
+		animated_sprite_2d.play("Jump")
+		
+		if isShooting:
+			animated_sprite_2d.play("Shoot_Jump")
 			
 func PlayJumpUpVFX():
 	var vfxToSpawn = preload("res://Scenes/vfx_jump_up.tscn")
@@ -85,5 +107,13 @@ func TryToShoot():
 		
 	isShooting = true
 	Shoot()
+	PlayFireVFX()
 	await get_tree().create_timer(SHOOT_DURATION).timeout
 	isShooting = false
+	
+func PlayFireVFX():
+	var vfxToSpawn = preload("res://Scenes/vfx_player_fire.tscn")
+	var vfxInstance = GameManager.SpawnVFX(vfxToSpawn,shooting_point.global_position)
+		
+	if animated_sprite_2d.flip_h:
+		vfxInstance.scale.x = -1

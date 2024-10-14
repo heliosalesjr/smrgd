@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://gn1s7gxhsxqh"]
+[gd_scene load_steps=78 format=3 uid="uid://gn1s7gxhsxqh"]
 
 [ext_resource type="Texture2D" uid="uid://bvm2fqsbni1g3" path="res://assets/Tilemap/Tilemap_ProjectLittleAdventurerAndie2D.png" id="1_jya3w"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="2_7er21"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cg14ammso72hq" path="res://assets/Animations/Player/Run.png" id="3_832pq"]
 [ext_resource type="Texture2D" uid="uid://c1jw6qacf131g" path="res://assets/Animations/Player/Jump.png" id="3_waham"]
 [ext_resource type="Script" path="res://scripts/area_2d_player_reset_area.gd" id="6_d3fcb"]
+[ext_resource type="Texture2D" uid="uid://cnd360jrxfdm" path="res://assets/Animations/Player/Shoot_Stand.png" id="6_w7c4s"]
 [ext_resource type="Texture2D" uid="uid://p7ae6yhi8hgn" path="res://assets/Background/05_ProjectLittleAdventurerAndie2D.png" id="7_fkr3u"]
 [ext_resource type="Texture2D" uid="uid://bw4m1wwl7xfy" path="res://assets/Background/04_ProjectLittleAdventurerAndie2D.png" id="8_cbj5d"]
 [ext_resource type="Texture2D" uid="uid://1fphiq4sco1d" path="res://assets/Background/03_ProjectLittleAdventurerAndie2D.png" id="9_fkt7a"]
@@ -623,6 +624,26 @@ region = Rect2(448, 0, 64, 64)
 atlas = ExtResource("3_832pq")
 region = Rect2(512, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qj815"]
+atlas = ExtResource("6_w7c4s")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apdfj"]
+atlas = ExtResource("6_w7c4s")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tg5e"]
+atlas = ExtResource("6_w7c4s")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ui4fa"]
+atlas = ExtResource("6_w7c4s")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqq4c"]
+atlas = ExtResource("6_w7c4s")
+region = Rect2(256, 0, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_lsv5o"]
 animations = [{
 "frames": [{
@@ -723,6 +744,26 @@ animations = [{
 "loop": true,
 "name": &"Run",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qj815")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apdfj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tg5e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ui4fa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqq4c")
+}],
+"loop": false,
+"name": &"Shoot_Stand",
+"speed": 20.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kcnqi"]
@@ -861,7 +902,7 @@ shape = SubResource("CapsuleShape2D_obbby")
 z_index = 100
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_lsv5o")
-animation = &"Idle"
+animation = &"Shoot_Stand"
 autoplay = "Idle"
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -869,6 +910,9 @@ offset = Vector2(0, -80)
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
+
+[node name="Shooting_Point" type="Node2D" parent="Player"]
+position = Vector2(26, -16)
 
 [node name="Area2D_PlayerResetArea" type="Area2D" parent="."]
 collision_layer = 0

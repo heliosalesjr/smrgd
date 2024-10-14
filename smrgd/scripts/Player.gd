@@ -5,9 +5,12 @@ const SPEED = 170
 const JUMP_VELOCITY = -650
 const GRAVITY = 1800
 @onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var shooting_point: Node2D = $Shooting_Point
 
 var AirborneLastFrame = false;
 
+var isShooting = false
+const SHOOT_DURATION = 0.249
 
 func _ready():
 	GameManager.player = self
@@ -35,6 +38,9 @@ func _physics_process(delta):
 	else:
 		velocity.x = 0
 		
+	if Input.is_action_just_pressed("Shoot"):
+		TryToShoot()
+		
 	if Input.is_action_just_pressed("Down") && is_on_floor():
 		position.y += 3
 		
@@ -49,7 +55,10 @@ func UpdateAnimation():
 		if abs(velocity.x) >= 0.1:
 			animated_sprite_2d.play("Run")
 		else:
-			animated_sprite_2d.play("Idle")
+			if isShooting:
+				animated_sprite_2d.play("Shoot_Stand")
+			else:
+				animated_sprite_2d.play("Idle")
 	else:
 		animated_sprite_2d.play("Jump")		
 			
@@ -60,3 +69,21 @@ func PlayJumpUpVFX():
 func PlayLandVFX():
 	var vfxToSpawn = preload("res://Scenes/vfx_land.tscn")	
 	GameManager.SpawnVFX(vfxToSpawn,global_position)
+
+func Shoot():
+	var bulletToSpawn = preload("res://Scenes/bullet.tscn")
+	var bulletInstance = GameManager.SpawnVFX(bulletToSpawn,shooting_point.global_position)
+	
+	if animated_sprite_2d.flip_h:
+		bulletInstance.direction = -1
+	else:
+		bulletInstance.direction = 1
+
+func TryToShoot():
+	if isShooting:
+		return
+		
+	isShooting = true
+	Shoot()
+	await get_tree().create_timer(SHOOT_DURATION).timeout
+	isShooting = false

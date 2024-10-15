@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://gn1s7gxhsxqh"]
+[gd_scene load_steps=115 format=3 uid="uid://gn1s7gxhsxqh"]
 
 [ext_resource type="Texture2D" uid="uid://bvm2fqsbni1g3" path="res://assets/Tilemap/Tilemap_ProjectLittleAdventurerAndie2D.png" id="1_jya3w"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="2_7er21"]
@@ -1130,6 +1130,25 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3ghw"]
+bg_color = Color(0, 0, 0, 0.588235)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.792157, 0.317647, 0.407843, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrn18"]
+bg_color = Color(0.792157, 0.317647, 0.407843, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [node name="Root" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -1264,5 +1283,27 @@ centered = false
 
 [node name="Enemy" parent="." instance=ExtResource("20_invuo")]
 position = Vector2(192, -16)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 110
+
+[node name="GameScreen" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/GameScreen"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 450.0
+offset_bottom = 90.0
+theme_override_styles/background = SubResource("StyleBoxFlat_i3ghw")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hrn18")
+value = 100.0
+show_percentage = false
 
 [connection signal="body_entered" from="Area2D_PlayerResetArea" to="Area2D_PlayerResetArea" method="_on_body_entered"]

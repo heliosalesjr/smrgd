@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name PlayerController
 
 
 const SPEED = 170
@@ -117,3 +118,6 @@ func PlayFireVFX():
 		
 	if animated_sprite_2d.flip_h:
 		vfxInstance.scale.x = -1
+
+func ApplyDamage(damage:int):
+	pass

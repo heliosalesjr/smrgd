@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=3 uid="uid://gn1s7gxhsxqh"]
+[gd_scene load_steps=122 format=3 uid="uid://gn1s7gxhsxqh"]
 
 [ext_resource type="Texture2D" uid="uid://bvm2fqsbni1g3" path="res://assets/Tilemap/Tilemap_ProjectLittleAdventurerAndie2D.png" id="1_jya3w"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="2_7er21"]
@@ -1159,6 +1159,20 @@ font_color = Color(1, 0.862745, 0, 1)
 font_size = 80
 font_color = Color(0.823529, 0.67451, 0.0862745, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tpvkw"]
+bg_color = Color(0.25098, 0.866667, 0.764706, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvkfo"]
+bg_color = Color(0.176471, 0.537255, 0.584314, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ft7th"]
 bg_color = Color(0.823529, 0.670588, 0.0862745, 1)
 corner_radius_top_left = 20
@@ -1373,8 +1387,13 @@ offset_right = 150.0
 offset_bottom = 136.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxFlat_tpvkw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cvkfo")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ft7th")
 text = "Restart"
 
@@ -1394,3 +1413,4 @@ position = Vector2(968, -32)
 position = Vector2(1368, -224)
 
 [connection signal="body_entered" from="Area2D_PlayerResetArea" to="Area2D_PlayerResetArea" method="_on_body_entered"]
+[connection signal="pressed" from="CanvasLayer/GameOverScreen/Restart" to="CanvasLayer" method="_on_restart_pressed"]

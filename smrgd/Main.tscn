@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=3 uid="uid://gn1s7gxhsxqh"]
+[gd_scene load_steps=118 format=3 uid="uid://gn1s7gxhsxqh"]
 
 [ext_resource type="Texture2D" uid="uid://bvm2fqsbni1g3" path="res://assets/Tilemap/Tilemap_ProjectLittleAdventurerAndie2D.png" id="1_jya3w"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="2_7er21"]
@@ -1151,6 +1151,10 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
+[sub_resource type="LabelSettings" id="LabelSettings_ij5xv"]
+font_size = 80
+font_color = Color(1, 0.862745, 0, 1)
+
 [node name="Root" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -1308,6 +1312,18 @@ theme_override_styles/background = SubResource("StyleBoxFlat_i3ghw")
 theme_override_styles/fill = SubResource("StyleBoxFlat_hrn18")
 value = 100.0
 show_percentage = false
+
+[node name="CoinLabel" type="Label" parent="CanvasLayer/GameScreen"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -86.0
+offset_right = -40.0
+offset_bottom = 110.0
+grow_horizontal = 0
+text = "0"
+label_settings = SubResource("LabelSettings_ij5xv")
 
 [node name="Coin" parent="." instance=ExtResource("28_tu34h")]
 position = Vector2(296, 0)

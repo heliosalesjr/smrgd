@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=3 uid="uid://gn1s7gxhsxqh"]
+[gd_scene load_steps=116 format=3 uid="uid://gn1s7gxhsxqh"]
 
 [ext_resource type="Texture2D" uid="uid://bvm2fqsbni1g3" path="res://assets/Tilemap/Tilemap_ProjectLittleAdventurerAndie2D.png" id="1_jya3w"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="2_7er21"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://dnnynks1j6wx4" path="res://assets/Background/CloseBackground/CBG04_ProjectLittleAdventurerAndie2D.png" id="16_l2s1r"]
 [ext_resource type="Texture2D" uid="uid://sihtifed3gqv" path="res://assets/Background/CloseBackground/CBG05_ProjectLittleAdventurerAndie2D.png" id="17_e68ko"]
 [ext_resource type="PackedScene" uid="uid://bgulaaq5vdbh3" path="res://Scenes/enemy.tscn" id="20_invuo"]
+[ext_resource type="Script" path="res://scripts/UI_Manager.gd" id="27_gnuys"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1byjx"]
 friction = 0.0
@@ -1286,6 +1287,7 @@ position = Vector2(192, -16)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 110
+script = ExtResource("27_gnuys")
 
 [node name="GameScreen" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -1295,7 +1297,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/GameScreen"]
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/GameScreen"]
 layout_mode = 0
 offset_left = 50.0
 offset_top = 50.0

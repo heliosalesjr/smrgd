@@ -12,7 +12,7 @@ var AirborneLastFrame = false
 var isShooting = false
 const SHOOT_DURATION = 0.249
 
-enum PlayerState {Normal,Hurt,Dead}
+enum PlayerState {Normal,Hurt,Dead, Uncontrollable}
 
 var currentState : PlayerState = PlayerState.Normal:
 	set(new_value):
@@ -26,7 +26,9 @@ var currentState : PlayerState = PlayerState.Normal:
 			PlayerState.Dead:
 				animated_sprite_2d.play("Die")
 				set_collision_layer_value(2,false)
-				GameManager.playerIsDead()
+				GameManager.PlayerIsDead()
+			PlayerState.Uncontrollable:
+				set_collision_layer_value(2,false)
 
 
 var currentHealth:
@@ -38,7 +40,7 @@ const MAX_HEALTH = 100
 var currentCoin = 0:
 	set(new_value):
 		currentCoin = new_value
-		emit_signal("playerCoinUpdated", currentCoin)
+		emit_signal("playerCoinUpdated",currentCoin)
 
 signal playerHealthUpdated(newValue, maxValue)
 signal playerCoinUpdated(newValue)
@@ -60,7 +62,7 @@ func _physics_process(delta):
 		PlayLandVFX()
 		AirborneLastFrame = false
 	
-	if currentState == PlayerState.Hurt || currentState == PlayerState.Dead:
+	if currentState == PlayerState.Hurt || currentState == PlayerState.Dead || currentState == PlayerState.Uncontrollable:
 		velocity.x = 0
 		move_and_slide()
 		return
@@ -191,6 +193,7 @@ func ApplyDamage(damage:int):
 		currentHealth = 0
 		currentState = PlayerState.Dead
 
+
 func CollectedCoin(value:int):
 	currentCoin += value
 	
@@ -198,3 +201,7 @@ func CollectedCoin(value:int):
 		currentHealth += value * 3
 		if currentHealth > MAX_HEALTH:
 			currentHealth = MAX_HEALTH
+
+
+func SwitchStateToUncontrollable():
+	currentState = PlayerState.Uncontrollable

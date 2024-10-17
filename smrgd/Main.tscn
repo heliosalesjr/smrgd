@@ -1,4 +1,4 @@
-[gd_scene load_steps=122 format=3 uid="uid://gn1s7gxhsxqh"]
+[gd_scene load_steps=123 format=3 uid="uid://gn1s7gxhsxqh"]
 
 [ext_resource type="Texture2D" uid="uid://bvm2fqsbni1g3" path="res://assets/Tilemap/Tilemap_ProjectLittleAdventurerAndie2D.png" id="1_jya3w"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="2_7er21"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://bgulaaq5vdbh3" path="res://Scenes/enemy.tscn" id="20_invuo"]
 [ext_resource type="Script" path="res://scripts/UI_Manager.gd" id="27_gnuys"]
 [ext_resource type="PackedScene" uid="uid://4l13vpmjwrem" path="res://Scenes/coin.tscn" id="28_tu34h"]
+[ext_resource type="PackedScene" uid="uid://dpmtitcvvqpnq" path="res://Scenes/end_door.tscn" id="29_3jjd4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1byjx"]
 friction = 0.0
@@ -1411,6 +1412,9 @@ position = Vector2(968, -32)
 
 [node name="Coin5" parent="." instance=ExtResource("28_tu34h")]
 position = Vector2(1368, -224)
+
+[node name="EndDoor" parent="." instance=ExtResource("29_3jjd4")]
+position = Vector2(1656, -64)
 
 [connection signal="body_entered" from="Area2D_PlayerResetArea" to="Area2D_PlayerResetArea" method="_on_body_entered"]
 [connection signal="pressed" from="CanvasLayer/GameOverScreen/Restart" to="CanvasLayer" method="_on_restart_pressed"]

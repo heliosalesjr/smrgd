@@ -1,11 +1,13 @@
 extends Node
 
-var player
+var player : PlayerController
 var playerOriginalPos
+
 signal gameOver()
-	
+
 func PlayerEnteredResetArea():
 	player.position = playerOriginalPos
+
 
 func SpawnVFX(vfxToSpawn : Resource, position : Vector2):
 	var vfxInstance = vfxToSpawn.instantiate()
@@ -14,5 +16,9 @@ func SpawnVFX(vfxToSpawn : Resource, position : Vector2):
 	
 	return vfxInstance
 
-func playerIsDead():
+func PlayerIsDead():
+	emit_signal("gameOver")
+
+func PlayerEnteredTheEndDoor():
+	player.SwitchStateToUncontrollable()
 	emit_signal("gameOver")
